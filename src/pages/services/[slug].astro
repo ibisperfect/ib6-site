@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import { site, services, serviceSeo } from '../../data/site';
+import { faqSchema } from '../../data/schema';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: serviceSeo[s.id].slug }, props: { id: s.id } }));
+}
+const { id } = Astro.props as { id: string };
+const svc = services.find((s) => s.id === id)!;
+const seo = serviceSeo[id];
+const others = services.filter((s) => s.id !== id);
+const url = `${site.url}/services/${seo.slug}`;
+const serviceSchema = {
+  '@type': 'Service',
+  '@id': `${url}#service`,
+  name: svc.title,
+  serviceType: svc.title,
+  description: seo.metaDescription,
+  url,
+  provider: { '@id': `${site.url}/#organization` },
+  areaServed: [{ '@type': 'Country', name: 'United Kingdom' }, { '@type': 'Place', name: 'Europe' }],
+  audience: { '@type': 'BusinessAudience', name: 'Small and mid-sized businesses' },
+};
+---
+<Base
+  title={seo.seoTitle}
+  description={seo.metaDescription}
+  breadcrumbs={[{ name: 'Services', path: '/services' }, { name: svc.title, path: `/services/${seo.slug}` }]}
+  schema={[serviceSchema, faqSchema(seo.faqs)]}
+>
+  <section class="hero">
+    <div class="container">
+      <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services">Services</a> / <span>{svc.title}</span></nav>
+      <p class="eyebrow reveal">{svc.title}</p>
+      <h1 class="display reveal" style="font-size:clamp(40px,5.6vw,76px);max-width:16ch">{seo.h1}</h1>
+      <p class="lead reveal">{svc.short}</p>
+      <div class="hero-actions reveal" style="margin-top:32px">
+        <a class="btn btn-primary" href={site.booking}>Book a free 30-min call</a>
+        <a class="btn btn-ghost" href="/#work">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" style="padding-top:0">
+    <div class="container detail-split">
+      <div class="prose reveal">{seo.intro.map((p) => <p>{p}</p>)}</div>
+      <div class="reveal">
+        <div class="card">
+          <h2 class="h3">This is for you if</h2>
+          <ul class="checks">{seo.forWho.map((w) => <li>{w}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">What you get</p><h2 class="h2">Deliverables</h2></div><p class="lead">{svc.body}</p></div>
+      <div class="cards">
+        {svc.outcomes.map((o, i) => (
+          <div class="card reveal"><div class="ico">{i + 1}</div><h3 class="h3">{o}</h3></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq items={seo.faqs} title={`${svc.title}: common questions`} />
+
+  <section class="section-tight section-alt">
+    <div class="container">
+      <p class="eyebrow reveal">Related services</p>
+      <div class="related reveal">
+        {others.map((o) => <a href={`/services/${serviceSeo[o.id].slug}`}>{o.title} →</a>)}
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

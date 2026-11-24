@@ -144,3 +144,82 @@ export const engagements = [
   { title: 'Build Project', duration: '4–12 weeks', body: 'Design and delivery of a defined AI, automation or search initiative.' },
   { title: 'Advisory Retainer', duration: 'Monthly', body: 'Ongoing automation, SEO and AI support on a fixed monthly scope.' },
 ];
+
+// ---------- SEO: dedicated service landing pages ----------
+export const serviceSeo: Record<string, {
+  slug: string; seoTitle: string; metaDescription: string; h1: string; intro: string[];
+  forWho: string[]; faqs: { q: string; a: string }[];
+}> = {
+  architecture: {
+    slug: 'ai-architecture',
+    seoTitle: 'AI Architecture & Integration Consulting | IB6',
+    metaDescription: 'Secure, reliable AI systems that fit your existing tools. Model and vendor selection, data flows, RAG, evaluation and cost control for growing businesses.',
+    h1: 'AI architecture that fits the business you already run.',
+    intro: [
+      'Most AI projects fail between the demo and production: data that isn’t ready, tools that don’t connect, costs nobody modelled. We design the architecture first — so what we build is secure, reliable and affordable to run.',
+      'We choose models and vendors on evidence, design how data flows between your systems, add retrieval over your own documents where it helps, and build evaluation and monitoring in from day one.',
+    ],
+    forWho: ['You want to use AI on your own data — documents, CRM, product catalogue', 'You have tried AI tools that never connected to your systems', 'You need clear answers on data privacy, cost and vendor lock-in'],
+    faqs: [
+      { q: 'What does an AI architect do?', a: 'An AI architect decides how AI fits into your existing systems: which models and vendors to use, how data moves between tools, how answers are checked for quality, and what it will cost to run. The output is a documented plan your developers — or ours — can build from.' },
+      { q: 'Do we need our own AI model?', a: 'Almost never. Growing businesses get the best results from leading commercial models connected to their own data. We only recommend custom or self-hosted models when privacy, cost or performance clearly require it.' },
+      { q: 'How do you handle data privacy?', a: 'Privacy is designed in, not added later: we map which data goes where, prefer vendors with UK/EU data processing and no training on your data, and document every choice so you can show it to clients and auditors.' },
+    ],
+  },
+  seo: {
+    slug: 'seo-ai-search',
+    seoTitle: 'SEO & AI Search Optimisation (GEO) Services | IB6',
+    metaDescription: 'Get found in Google and cited in ChatGPT, Gemini and Perplexity. Technical SEO, content and AI search optimisation, reported against leads — not vanity metrics.',
+    h1: 'Be found in Google — and cited in AI answers.',
+    intro: [
+      'Buyers no longer only search Google. They ask ChatGPT, Gemini and Perplexity — and those tools recommend the companies they can understand and trust. We make sure yours is one of them.',
+      'We fix the technical foundations, build content around the questions your buyers actually ask, and structure your site so both search engines and AI assistants can read, quote and cite it. Search has been our craft since we built and ranked our first online store from scratch.',
+    ],
+    forWho: ['Your website gets little organic traffic or few enquiries', 'Competitors appear in AI answers and you do not', 'You want SEO reported in leads and revenue, not rankings alone'],
+    faqs: [
+      { q: 'What is AI search optimisation (GEO)?', a: 'Generative engine optimisation (GEO) means making your business easy for AI assistants such as ChatGPT, Gemini and Perplexity to find, understand and cite. It builds on SEO: clear answers, consistent facts about your company, structured data and credible sources that mention you.' },
+      { q: 'How long does SEO take to work?', a: 'Technical fixes can show results within weeks. Content and authority usually take three to six months to build momentum. We report progress monthly against enquiries and pipeline, so you see what is working early.' },
+      { q: 'Do you guarantee rankings?', a: 'No — nobody honest can, because search engines and AI assistants decide rankings. We guarantee the work: a clear plan, measurable deliverables and transparent reporting.' },
+    ],
+  },
+  automation: {
+    slug: 'ai-automation',
+    seoTitle: 'AI Automation for Small & Mid-Sized Businesses | IB6',
+    metaDescription: 'Replace manual work with AI. Workflows and AI agents connected to your CRM, e-commerce store, email and internal tools — shipped in weeks, measured in hours saved.',
+    h1: 'AI automation that gives your team its hours back.',
+    intro: [
+      'If your people copy data between systems, answer the same emails every day or build the same report every week, that work can now be automated — reliably and at a price that makes sense for a growing business.',
+      'We map your processes, pick the automations with the fastest payback, and build them on top of the tools you already use: your CRM, online store, email and spreadsheets. Every workflow keeps a human in the loop where it matters, and every automation is measured before and after.',
+    ],
+    forWho: ['Your team spends hours a week on repetitive admin', 'You run an online store with product data, orders and customer emails to manage', 'You want automation without replacing your current systems'],
+    faqs: [
+      { q: 'What can AI automation do for a small or mid-sized business?', a: 'Typical wins include drafting and routing customer emails, publishing and updating product data, qualifying leads, generating quotes and proposals, reconciling data between systems and building recurring reports — work that usually takes hours a week.' },
+      { q: 'How much does AI automation cost?', a: 'It depends on scope. Most clients start with a fixed-price project for one or two high-value workflows, so the payback is clear before anything bigger. Running costs for AI usage are usually modest compared with the time saved.' },
+      { q: 'Will automation replace our team?', a: 'No. The goal is to remove repetitive work so your people spend time on customers and decisions. Sensitive steps keep a human approval in the workflow.' },
+    ],
+  },
+  strategy: {
+    slug: 'ai-strategy',
+    seoTitle: 'AI Strategy Consulting for Growing Businesses | IB6',
+    metaDescription: 'Know where AI makes money in your business. AI opportunity mapping, business cases and a practical 12-month roadmap — from a team that also builds what it recommends.',
+    h1: 'An AI strategy you can actually execute.',
+    intro: [
+      'Every business is being told to “do AI”. Few are told where it actually pays off. We give leadership teams a clear, honest view: which opportunities are worth doing, what they cost, what they return, and in which order.',
+      'Our strategy work draws on experience across venture capital, startups and large operations — and because we also build what we recommend, our roadmaps are grounded in what is realistic for your team and budget.',
+    ],
+    forWho: ['Leadership wants an AI plan but does not know where to start', 'You have many AI ideas and need to prioritise', 'You want a roadmap tied to revenue, cost and risk'],
+    faqs: [
+      { q: 'What does an AI strategy include?', a: 'An AI opportunity map ranked by value and feasibility, business cases with cost, risk and payback, a 12-month roadmap with owners and budget, and simple governance rules for using AI safely.' },
+      { q: 'How long does an AI strategy take?', a: 'A focused strategy sprint usually takes two to four weeks, depending on the size of the business and how much data and access is available.' },
+      { q: 'Can you also implement the strategy?', a: 'Yes. Unlike strategy-only firms, we design and build the systems we recommend — architecture, automation and search — so nothing is lost between plan and delivery.' },
+    ],
+  },
+};
+
+export const homeFaqs = [
+  { q: 'What does IB6 do?', a: 'IB6 helps growing businesses replace manual work with AI and get found by customers. We provide AI architecture, SEO and AI search optimisation, AI automation and AI strategy — designed, built and run by one senior team.' },
+  { q: 'Who do you work with?', a: 'Mainly small and mid-sized businesses — typically 10 to 250 people — including e-commerce and retail, professional and B2B services, and companies with heavy manual admin.' },
+  { q: 'Where is IB6 based?', a: 'IB6 Ltd is a UK company with a registered office in Essex, England. We work remotely with clients across the UK and Europe.' },
+  { q: 'How do projects start?', a: 'With a free 30-minute call. If we are a fit, you receive a proposal with scope, timeline and a fixed price within 48 hours, and work usually starts within a week.' },
+  { q: 'How much does it cost?', a: 'Projects are priced at a fixed fee agreed upfront — strategy sprints, build projects or a monthly retainer. You know the cost before any work begins.' },
+];

@@ -250,3 +250,27 @@ a { color: inherit; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 0; }
 .tags span { font-size: 12.5px; font-weight: 500; padding: 5px 10px; border-radius: 999px; background: #eef2ff; color: var(--accent); }
 .work .w-link { margin-top: auto; padding-top: 22px; font-size: 15px; }
+
+/* ---------- SEO pages ---------- */
+.crumbs { font-size: 14px; color: var(--ink-3); margin-bottom: 28px; }
+.crumbs a { text-decoration: none; } .crumbs a:hover { color: var(--ink); }
+.detail-split { display: grid; grid-template-columns: 7fr 5fr; gap: 64px; align-items: start; }
+.checks { list-style: none; padding: 0; margin: 18px 0 0; }
+.checks li { padding: 12px 0 12px 30px; border-top: 1px solid var(--line); position: relative; color: var(--ink-2); }
+.checks li::before { content: "✓"; position: absolute; left: 0; top: 12px; color: var(--accent); font-weight: 700; }
+.related { display: flex; flex-wrap: wrap; gap: 12px; }
+.related a { text-decoration: none; padding: 12px 20px; border-radius: 999px; background: #fff; font-weight: 500; transition: color .2s; }
+.related a:hover { color: var(--accent); }
+.faq-wrap { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+.faq details { border-top: 1px solid var(--line); padding: 4px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; font-size: 19px; font-weight: 600; letter-spacing: -.015em; padding: 20px 40px 20px 0; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 26px; font-weight: 400; color: var(--accent); transition: transform .3s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: 0 0 22px; color: var(--ink-2); max-width: 62ch; }
+@media (max-width: 900px) { .detail-split, .faq-wrap { grid-template-columns: 1fr; gap: 32px; } }
+.footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { text-decoration: none; } .footer-col a:hover { color: var(--ink); }
+.fc-title { font-weight: 600; color: var(--ink); margin-bottom: 4px; }

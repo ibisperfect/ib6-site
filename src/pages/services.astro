@@ -1,13 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { services, engagements } from '../data/site';
+import { services, engagements, serviceSeo } from '../data/site';
 ---
-<Base title="Services" description="AI architecture, SEO & AI search, AI automation and AI strategy — delivered end to end by one senior team.">
+<Base title="AI Automation, AI Architecture & SEO Services | IB6" description="AI architecture, SEO and AI search optimisation, AI automation and AI strategy for growing businesses — designed, built and run end to end by one senior team." breadcrumbs={[{ name: 'Services', path: '/services' }]}>
   <section class="hero">
     <div class="container">
       <p class="eyebrow reveal">Services</p>
-      <h1 class="display reveal">Four disciplines.<br /><span class="grad">One plan.</span></h1>
+      <h1 class="display reveal">AI & search services.<br /><span class="grad">One plan.</span></h1>
       <p class="lead reveal">Choose one, or combine them. Every engagement starts with the business outcome — not the technology.</p>
     </div>
   </section>
@@ -20,6 +20,7 @@ import { services, engagements } from '../data/site';
           <div>
             <p class="lead">{s.body}</p>
             <ul>{s.outcomes.map((o) => <li>{o}</li>)}</ul>
+            <p style="margin-top:24px"><a class="link-arrow" href={`/services/${serviceSeo[s.id].slug}`}>More about {s.title} →</a></p>
           </div>
         </article>
       ))}

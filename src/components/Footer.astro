@@ -1,5 +1,5 @@
 ---
-import { nav, site } from '../data/site';
+import { nav, site, services, serviceSeo } from '../data/site';
 import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
@@ -11,10 +11,17 @@ const year = new Date().getFullYear();
         <p class="footer-tag">AI automation for growing businesses.</p>
         <p style="margin:6px 0 0"><a href={`mailto:${site.email}`} class="footer-mail">{site.email}</a></p>
       </div>
-      <div class="footer-links">
-        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="fc-title">Services</span>
+          {services.map((s) => <a href={`/services/${serviceSeo[s.id].slug}`}>{s.title}</a>)}
+        </div>
+        <div class="footer-col">
+          <span class="fc-title">Company</span>
+          {nav.filter((n) => n.href !== '/services').map((n) => <a href={n.href}>{n.label}</a>)}
         {site.linkedin && <a href={site.linkedin} rel="noopener">LinkedIn</a>}
-        <a href="/privacy">Privacy</a>
+          <a href="/privacy">Privacy</a>
+        </div>
       </div>
     </div>
     <p class="legal">

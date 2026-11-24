@@ -2,9 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import Portrait from '../components/Portrait.astro';
-import { site, services, approach, audiences, firstSteps, timeline, work } from '../data/site';
+import Faq from '../components/Faq.astro';
+import { site, services, approach, audiences, firstSteps, timeline, work, serviceSeo, homeFaqs } from '../data/site';
+import { faqSchema } from '../data/schema';
 ---
-<Base>
+<Base schema={[faqSchema(homeFaqs)]}>
   <section class="hero">
     <div class="container hero-grid">
       <div>
@@ -61,7 +63,7 @@ import { site, services, approach, audiences, firstSteps, timeline, work } from 
       </div>
       <div class="services">
         {services.map((s) => (
-          <a class="service reveal" href={`/services#${s.id}`}>
+          <a class="service reveal" href={`/services/${serviceSeo[s.id].slug}`}>
             <span class="num">{s.index}</span>
             <h3 class="h3">{s.title}</h3>
             <p>{s.short}</p>
@@ -168,6 +170,8 @@ import { site, services, approach, audiences, firstSteps, timeline, work } from 
       </div>
     </div>
   </section>
+
+  <Faq items={homeFaqs} />
 
   <Cta />
 </Base>

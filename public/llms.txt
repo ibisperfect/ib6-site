@@ -1,0 +1,25 @@
+# IB6
+
+> IB6 (IB6 Ltd, UK) helps growing small and mid-sized businesses replace manual work with AI and get found by customers in Google and AI assistants. Founded and led by Illia Bovkun. Services are designed, built and run end to end by one senior team.
+
+Key facts:
+- Legal entity: IB6 Ltd, UK private limited company (England and Wales; registration in progress). Registered office: Office 7786, 58 Peregrine Road, Hainault, Ilford, Essex, IG6 3SZ, United Kingdom.
+- Founder: Illia Bovkun — built his first online store from scratch at 17 and grew it through search; experience across oil & gas, venture capital and startups.
+- Clients: small and mid-sized businesses (typically 10–250 people), e-commerce and retail, professional and B2B services. Remote, UK and Europe.
+- Engagements: fixed price — Strategy Sprint (2–4 weeks), Build Project (4–12 weeks), Advisory Retainer (monthly). First step: free 30-minute call.
+- Contact: hello@ib6.uk · https://calendly.com/ib6
+
+## Services
+- [AI Architecture](https://ib6.uk/services/ai-architecture): model and vendor selection, data flows, retrieval over company data, evaluation, privacy and cost control.
+- [SEO & AI Search](https://ib6.uk/services/seo-ai-search): technical SEO, content and generative engine optimisation (GEO) for ChatGPT, Gemini and Perplexity.
+- [AI Automation](https://ib6.uk/services/ai-automation): AI workflows and agents connected to CRM, e-commerce, email and internal tools.
+- [AI & Corporate Strategy](https://ib6.uk/services/ai-strategy): AI opportunity mapping, business cases and 12-month roadmaps.
+
+## Selected work
+- [eARTico](https://eartico.com): online store for a turnkey interiors company in Spain and Montenegro, with an automated product-publishing pipeline via the WooCommerce API.
+- [ISS Budva](https://issbudva.com): website for a real-estate and construction company in Budva, Montenegro, built for search.
+
+## Pages
+- [About](https://ib6.uk/about)
+- [Approach](https://ib6.uk/approach)
+- [Contact](https://ib6.uk/contact)

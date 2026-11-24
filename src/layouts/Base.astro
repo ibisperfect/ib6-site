@@ -2,57 +2,144 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../data/site';
+import { site, services, serviceSeo } from '../data/site';
 
-interface Props { title?: string; description?: string; }
-const { title, description = site.description } = Astro.props;
-const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
-const canonical = new URL(Astro.url.pathname, site.url).href;
+interface Crumb { name: string; path: string; }
+interface Props {
+  title?: string;            // full <title>; falls back to the homepage title
+  description?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  breadcrumbs?: Crumb[];     // excluding Home
+  schema?: Record<string, unknown>[];
+  ogType?: string;
+}
+const {
+  title = 'AI Automation for Growing Businesses | IB6',
+  description = site.description,
+  noindex = false,
+  ogImage = '/og.png',
+  breadcrumbs = [],
+  schema = [],
+  ogType = 'website',
+} = Astro.props;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'ProfessionalService',
-      '@id': `${site.url}/#org`,
-      name: site.legalName,
-      url: site.url,
-      email: site.email,
-      description: site.description,
-      founder: { '@id': `${site.url}/#founder` },
-      address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Ilford', postalCode: 'IG6 3SZ' },
-      areaServed: ['GB', 'EU', 'Worldwide'],
-      knowsAbout: ['AI strategy', 'AI architecture', 'AI automation', 'Search engine optimisation', 'Corporate strategy', 'Oil and gas', 'Venture capital', 'Startups'],
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).href;
+const ogUrl = new URL(ogImage, site.url).href;
+const ORG = `${site.url}/#organization`;
+const PERSON = `${site.url}/#founder`;
+const sameAs = [site.linkedin].filter(Boolean);
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': ORG,
+    name: site.legalName,
+    alternateName: site.name,
+    url: site.url,
+    logo: { '@type': 'ImageObject', url: `${site.url}/icon-512.png`, width: 512, height: 512 },
+    image: `${site.url}/og.png`,
+    email: site.email,
+    description: site.description,
+    slogan: site.tagline,
+    founder: { '@id': PERSON },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Office 7786, 58 Peregrine Road, Hainault',
+      addressLocality: 'Ilford',
+      addressRegion: 'Essex',
+      postalCode: 'IG6 3SZ',
+      addressCountry: 'GB',
     },
-    {
-      '@type': 'Person',
-      '@id': `${site.url}/#founder`,
-      name: site.founder,
-      jobTitle: 'Founder',
-      worksFor: { '@id': `${site.url}/#org` },
-      url: `${site.url}/about`,
-      sameAs: [site.linkedin].filter(Boolean),
+    areaServed: [{ '@type': 'Country', name: 'United Kingdom' }, { '@type': 'Place', name: 'Europe' }],
+    knowsAbout: ['AI automation', 'AI architecture', 'Search engine optimisation', 'Generative engine optimisation', 'AI strategy', 'E-commerce', 'WooCommerce'],
+    contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: site.email, url: site.booking, availableLanguage: ['English'] },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'IB6 services',
+      itemListElement: services.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s.title, url: `${site.url}/services/${serviceSeo[s.id].slug}` },
+      })),
     },
-  ],
-};
+    ...(sameAs.length ? { sameAs } : {}),
+  },
+  {
+    '@type': 'Person',
+    '@id': PERSON,
+    name: site.founder,
+    jobTitle: 'Founder',
+    worksFor: { '@id': ORG },
+    url: `${site.url}/about`,
+    image: `${site.url}/images/illia.jpg`,
+    knowsAbout: ['AI automation', 'SEO', 'E-commerce', 'Venture capital', 'Startups'],
+    ...(sameAs.length ? { sameAs } : {}),
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    url: site.url,
+    name: site.name,
+    publisher: { '@id': ORG },
+    inLanguage: 'en-GB',
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    isPartOf: { '@id': `${site.url}/#website` },
+    about: { '@id': ORG },
+    inLanguage: 'en-GB',
+  },
+];
+if (breadcrumbs.length) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: 'Home', path: '/' }, ...breadcrumbs].map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.path, site.url).href,
+    })),
+  });
+}
+const jsonLd = { '@context': 'https://schema.org', '@graph': [...graph, ...schema] };
 ---
 <!doctype html>
 <html lang="en-GB" class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{fullTitle}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex
+      ? <meta name="robots" content="noindex, follow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
+    <meta name="author" content={site.founder} />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
-    <meta property="og:type" content="website" />
+
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${site.url}/og.png`} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="IB6 — AI automation for growing businesses" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script is:inline>document.documentElement.classList.remove('no-js');</script>
   </head>
