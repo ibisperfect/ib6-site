@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Privacy" description="How IB6 handles personal data.">
+  <section class="section-tight">
+    <div class="container prose">
+      <p class="eyebrow">Legal</p>
+      <h1 class="h2">Privacy notice</h1>
+      <!-- Draft — have this reviewed before launch. -->
+      <p style="margin-top:32px">{site.legalName} ("we") is the controller of personal data you send us. This website does not use advertising or tracking cookies.</p>
+      <h2>What we collect</h2>
+      <p>Only what you choose to send — typically your name, email address and the content of your message.</p>
+      <h2>Why</h2>
+      <p>To reply to your enquiry and, if we work together, to deliver our services (legitimate interests and contract, UK GDPR Art. 6(1)(b) and (f)).</p>
+      <h2>How long</h2>
+      <p>Enquiries are kept for up to 24 months; client records for as long as the law requires.</p>
+      <h2>Your rights</h2>
+      <p>You can ask to access, correct or delete your data at any time by emailing <a href={`mailto:${site.email}`}>{site.email}</a>. You may also complain to the Information Commissioner's Office (ico.org.uk).</p>
+    </div>
+  </section>
+</Base>

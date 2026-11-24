@@ -1,0 +1,20 @@
+---
+import { nav, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><a href="/" class="logo">IB<span>6</span></a><p style="margin:12px 0 0"><a href={`mailto:${site.email}`} style="text-decoration:none;color:var(--ink)">{site.email}</a></p></div>
+      <div class="footer-links">
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+        <a href={site.linkedin} rel="noopener">LinkedIn</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <p class="legal">
+      © {year} {site.legalName}. {site.legalName} is a private limited company registered in England and Wales,
+      company number {site.companyNumber}. Registered office: {site.registeredOffice}.
+    </p>
+  </div>
+</footer>

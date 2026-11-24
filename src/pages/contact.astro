@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Contact" description="Get in touch with IB6 to discuss AI strategy, automation or SEO.">
+  <section class="hero">
+    <div class="container contact-grid">
+      <div>
+        <p class="eyebrow reveal">Contact</p>
+        <h1 class="display reveal" style="font-size:clamp(44px,6vw,80px)">Let’s talk.</h1>
+        <p class="lead reveal" style="margin-top:28px">
+          A short note about your business and what you want to change is enough. I reply within one working day.
+        </p>
+      </div>
+      <div class="reveal" style="align-self:end">
+        <div class="contact-item"><div class="label">Email</div><a href={`mailto:${site.email}`}>{site.email}</a></div>
+        {site.booking && <div class="contact-item"><div class="label">Book a call</div><a href={site.booking}>calendly.com/ib6 →</a></div>}
+        <div class="contact-item"><div class="label">LinkedIn</div><a href={site.linkedin} rel="noopener">Illia Bovkun →</a></div>
+        <div class="contact-item"><div class="label">Registered office</div><p class="muted" style="margin:0">{site.registeredOffice}</p></div>
+      </div>
+    </div>
+  </section>
+</Base>

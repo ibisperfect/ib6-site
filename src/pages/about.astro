@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
+---
+<Base title="About Illia Bovkun" description="Illia Bovkun is the founder of IB6, an independent consultancy for AI strategy, AI architecture, automation and SEO.">
+  <section class="hero">
+    <div class="container founder">
+      <div class="portrait reveal">
+        <picture><source type="image/webp" srcset="/images/illia-600.webp 600w, /images/illia.webp 1200w" sizes="(max-width: 820px) 90vw, 40vw" /><img src="/images/illia.jpg" alt="Portrait of Illia Bovkun" width="1200" height="1500" fetchpriority="high" /></picture>
+      </div>
+      <div>
+        <p class="eyebrow reveal">About</p>
+        <h1 class="display reveal" style="font-size:clamp(44px,6vw,80px)">Illia Bovkun</h1>
+        <p class="lead reveal" style="margin-top:24px">Founder & Principal Consultant, IB6.</p>
+        <p class="reveal" style="margin-top:24px;display:flex;gap:28px;flex-wrap:wrap"><a class="link-arrow" href={`mailto:${site.email}`}>{site.email}</a><a class="link-arrow" href={site.booking}>Book a call →</a><a class="link-arrow" href={site.linkedin} rel="noopener">LinkedIn →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="prose reveal">
+        <!-- TODO: replace with your own story. Keep it concrete: years, industries, results. -->
+        <p>
+          I work where strategy meets engineering. For [X] years I have helped companies in [industries]
+          grow through search, automation and — more recently — applied AI.
+        </p>
+        <p>
+          I started IB6 for one reason: too many good ideas die between the strategy deck and the
+          implementation. By owning both, I make sure what is decided is what gets built.
+        </p>
+        <h2>Why “IB6”?</h2>
+        <p>
+          It is simply my initials — I.B. — and the six letters of my surname. A reminder that you are
+          hiring a person, not a brand.
+        </p>
+        <h2>Selected experience</h2>
+        <p>[Add 3–5 short, specific highlights: a client type, the problem, the measurable result.]</p>
+      </div>
+    </div>
+  </section>
+
+  <Cta title="Let’s see if we are a fit." />
+</Base>

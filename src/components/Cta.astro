@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+interface Props { title?: string; text?: string; }
+const {
+  title = 'Have a problem worth solving?',
+  text = 'Tell me where you want to be in twelve months. I will tell you honestly whether I can help — and how.',
+} = Astro.props;
+const cta = site.booking || `mailto:${site.email}`;
+---
+<section class="section section-dark cta">
+  <div class="container reveal">
+    <p class="eyebrow">Start a conversation</p>
+    <h2 class="h2">{title}</h2>
+    <p class="lead">{text}</p>
+    <div class="cta-actions"><a class="btn btn-primary" href={cta}>Book a 30-minute call</a><a class="btn btn-ghost-light" href={`mailto:${site.email}`}>{site.email}</a></div>
+  </div>
+</section>
