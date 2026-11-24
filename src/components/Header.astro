@@ -1,17 +1,17 @@
 ---
 import { nav, site } from '../data/site';
+import Logo from './Logo.astro';
 const path = Astro.url.pathname.replace(/\/$/, '');
-const cta = site.booking || `mailto:${site.email}`;
 ---
 <header class="site-header">
   <div class="container bar">
-    <a href="/" class="logo" aria-label="IB6 home">IB<span>6</span></a>
+    <Logo size={26} />
     <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     <nav class="nav" aria-label="Main">
       {nav.map((n) => (
         <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>
       ))}
-      <a class="btn btn-primary" href={cta}>Book a call</a>
+      <a class="btn btn-primary" href={site.booking}>Book a call</a>
     </nav>
   </div>
 </header>

@@ -1,14 +1,19 @@
 ---
 import { nav, site } from '../data/site';
+import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
-      <div><a href="/" class="logo">IB<span>6</span></a><p style="margin:12px 0 0"><a href={`mailto:${site.email}`} style="text-decoration:none;color:var(--ink)">{site.email}</a></p></div>
+      <div>
+        <Logo size={34} />
+        <p class="footer-tag">AI automation for growing businesses.</p>
+        <p style="margin:6px 0 0"><a href={`mailto:${site.email}`} class="footer-mail">{site.email}</a></p>
+      </div>
       <div class="footer-links">
         {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-        <a href={site.linkedin} rel="noopener">LinkedIn</a>
+        {site.linkedin && <a href={site.linkedin} rel="noopener">LinkedIn</a>}
         <a href="/privacy">Privacy</a>
       </div>
     </div>

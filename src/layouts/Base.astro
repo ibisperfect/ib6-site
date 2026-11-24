@@ -28,10 +28,10 @@ const jsonLd = {
       '@type': 'Person',
       '@id': `${site.url}/#founder`,
       name: site.founder,
-      jobTitle: 'Founder & Principal Consultant',
+      jobTitle: 'Founder',
       worksFor: { '@id': `${site.url}/#org` },
       url: `${site.url}/about`,
-      sameAs: [site.linkedin],
+      sameAs: [site.linkedin].filter(Boolean),
     },
   ],
 };

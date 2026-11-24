@@ -2,39 +2,48 @@
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import Portrait from '../components/Portrait.astro';
-import { site, services, approach, audiences, firstSteps } from '../data/site';
+import { site, services, approach, audiences, firstSteps, timeline, work } from '../data/site';
 ---
 <Base>
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow reveal">AI strategy · Automation · Search</p>
-        <h1 class="display reveal">AI that pays<br /><span class="grad">for itself.</span></h1>
+        <p class="eyebrow reveal">AI automation for growing businesses</p>
+        <h1 class="display reveal">AI automation<br />that <span class="grad">pays for itself.</span></h1>
         <p class="lead reveal">
-          I help energy companies, startups and investors decide where AI creates real value —
-          then build the systems and search presence that deliver it.
+          We help mid-sized businesses replace manual work with AI — and get found by the customers
+          looking for them. Designed, built and run by a senior team.
         </p>
         <div class="hero-actions reveal">
           <a class="btn btn-primary" href={site.booking}>Book a free 30-min call</a>
-          <a class="btn btn-ghost" href="/services">See services</a>
+          <a class="btn btn-ghost" href="#work">See our work</a>
         </div>
         <p class="hero-note reveal">Or write to <a class="link-arrow" href={`mailto:${site.email}`}>{site.email}</a></p>
       </div>
       <div class="hero-portrait reveal">
         <Portrait eager />
-        <div class="badge"><strong>Illia Bovkun</strong>Founder · 10 years in oil & gas, VC and startups</div>
+        <div class="photo-card">
+          <div>
+            <strong>Illia Bovkun</strong>
+            <span>Founder, IB6</span>
+          </div>
+          <span class="status"><i></i>Taking on new projects</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section-tight" style="padding-top:0">
     <div class="container">
-      <div class="proof reveal">
-        <div><span class="big">10+</span><span class="small">years of experience</span></div>
-        <div><span class="big">Oil & Gas</span><span class="small">operations at scale</span></div>
-        <div><span class="big">VC</span><span class="small">investment judgement</span></div>
-        <div><span class="big">Startups</span><span class="small">speed of execution</span></div>
-      </div>
+      <ol class="timeline reveal">
+        {timeline.map((t) => (
+          <li>
+            <span class="t-label">{t.label}</span>
+            <span class="t-title">{t.title}</span>
+            <span class="t-body">{t.body}</span>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -42,12 +51,12 @@ import { site, services, approach, audiences, firstSteps } from '../data/site';
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">What I do</p>
-          <h2 class="h2">Strategy and execution.<br />One accountable partner.</h2>
+          <p class="eyebrow">What we do</p>
+          <h2 class="h2">Strategy and execution.<br />One accountable team.</h2>
         </div>
         <p class="lead">
           Most companies buy strategy from one firm, engineering from another and SEO from a third — and the
-          plan gets lost in between. I own all of it, end to end.
+          plan gets lost in between. We own all of it, end to end.
         </p>
       </div>
       <div class="services">
@@ -63,14 +72,37 @@ import { site, services, approach, audiences, firstSteps } from '../data/site';
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="work">
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Who I work with</p>
-          <h2 class="h2">Built for three kinds of client.</h2>
+          <p class="eyebrow">Selected work</p>
+          <h2 class="h2">Built, shipped,<br />still running.</h2>
         </div>
-        <p class="lead">Each draws directly on a part of my background — so I speak your language from the first call.</p>
+        <p class="lead">Real businesses, real systems. Every project combines automation, a fast website and search.</p>
+      </div>
+      <div class="cards">
+        {work.map((w) => (
+          <article class="card work reveal">
+            <p class="w-sector">{w.sector}</p>
+            <h3 class="h3">{w.name}</h3>
+            <p>{w.body}</p>
+            <div class="tags">{w.tags.map((t) => <span>{t}</span>)}</div>
+            {w.url && <a class="link-arrow w-link" href={w.url} rel="noopener" target="_blank">{w.url.replace('https://', '')} ↗</a>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Who we help</p>
+          <h2 class="h2">Businesses that have outgrown manual work.</h2>
+        </div>
+        <p class="lead">If your team spends hours a week moving data between tools, we can probably give those hours back.</p>
       </div>
       <div class="cards">
         {audiences.map((a, i) => (
@@ -88,7 +120,7 @@ import { site, services, approach, audiences, firstSteps } from '../data/site';
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">How I work</p>
+          <p class="eyebrow">How we work</p>
           <h2 class="h2">From insight to impact.</h2>
         </div>
         <p class="lead">A simple, transparent method. Senior attention from the first call to the final handover.</p>
@@ -110,9 +142,9 @@ import { site, services, approach, audiences, firstSteps } from '../data/site';
       <div class="reveal"><Portrait /></div>
       <div class="reveal">
         <p class="eyebrow">Who you work with</p>
-        <p class="quote">“No hand-offs to juniors, no layers. You work with me directly — one person accountable for the thinking and the result.”</p>
-        <p class="signature">Illia Bovkun<span>Founder & Principal Consultant, IB6</span></p>
-        <p style="margin-top:28px"><a class="link-arrow" href="/about">My background →</a></p>
+        <p class="quote">“No hand-offs to juniors, no layers. You work directly with me and a small senior team — accountable for the thinking and the result.”</p>
+        <p class="signature">Illia Bovkun<span>Founder, IB6</span></p>
+        <p style="margin-top:28px"><a class="link-arrow" href="/about">Our story →</a></p>
       </div>
     </div>
   </section>

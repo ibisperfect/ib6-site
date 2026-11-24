@@ -2,62 +2,65 @@
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import Portrait from '../components/Portrait.astro';
-import { site, background } from '../data/site';
+import { site, timeline } from '../data/site';
 ---
-<Base title="About Illia Bovkun" description="Illia Bovkun is the founder of IB6. Ten years across oil & gas, venture capital and startups, now helping companies turn AI and search into measurable results.">
+<Base title="About" description="IB6 is led by Illia Bovkun, who built his first online store at 17. Experience across oil & gas, venture capital and startups, now focused on AI automation for growing businesses.">
   <section class="hero">
     <div class="container founder">
       <div class="reveal"><Portrait alt="Portrait of Illia Bovkun" eager /></div>
       <div>
-        <p class="eyebrow reveal">About</p>
+        <p class="eyebrow reveal">About IB6</p>
         <h1 class="display reveal" style="font-size:clamp(44px,5.6vw,76px)">Illia Bovkun</h1>
         <p class="lead reveal" style="margin-top:20px">
-          Founder of IB6. Ten years across oil & gas, venture capital and startups — now helping companies
-          turn AI and search into measurable results.
+          Founder of IB6. Building on the web since 17 — with experience across oil & gas, venture capital
+          and startups. Today, my team and I help growing businesses run on AI.
         </p>
         <p class="reveal" style="margin-top:28px;display:flex;gap:28px;flex-wrap:wrap">
           <a class="link-arrow" href={site.booking}>Book a call →</a>
           <a class="link-arrow" href={`mailto:${site.email}`}>{site.email}</a>
-          <a class="link-arrow" href={site.linkedin} rel="noopener">LinkedIn →</a>
+          {site.linkedin && <a class="link-arrow" href={site.linkedin} rel="noopener">LinkedIn →</a>}
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="section-tight" style="padding-top:0">
+    <div class="container">
+      <ol class="timeline reveal">
+        {timeline.map((t) => (
+          <li><span class="t-label">{t.label}</span><span class="t-title">{t.title}</span><span class="t-body">{t.body}</span></li>
+        ))}
+      </ol>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head reveal">
-        <div><p class="eyebrow">Background</p><h2 class="h2">Three worlds.<br />One way of thinking.</h2></div>
-        <p class="lead">Each taught me something that most AI consultants never have to learn.</p>
-      </div>
-      <div class="cards">
-        {background.map((b) => (
-          <div class="card reveal"><h3 class="h3">{b.title}</h3><p>{b.body}</p></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
       <div class="prose reveal">
-        <h2 style="margin-top:0">Why I started IB6</h2>
+        <h2 style="margin-top:0">It started with one online store</h2>
         <p>
-          In oil & gas I saw how much value large organisations lose to manual processes, slow reporting and
-          decisions made on stale data. In venture capital I learned to look at a business the way an investor
-          does — what really drives its value, and what is noise. With startups I learned to ship: small teams,
-          short runways, no room for slideware.
+          At 17 I built my first website: an online shop, made from scratch. With no budget for ads, the only
+          way to get customers was search — so I learned SEO by doing it. The shop became a successful business
+          and ran for years. It taught me the lesson I still work by: technology only matters when it brings in
+          customers or saves real time.
         </p>
+        <h2>Three very different schools</h2>
         <p>
-          AI changes the economics of all three. But most companies are stuck between strategy decks that never
-          get built and tools that never connect to the business. IB6 exists to close that gap: I decide with
-          you where AI pays off, then design and build it — and make sure customers can find you, in Google
+          In oil & gas I saw how much value organisations lose to manual processes and slow reporting. In venture
+          capital I learned to look at a business like an investor — what really drives its value, and what is
+          noise. With startups I learned to ship: small teams, short runways, no room for slideware.
+        </p>
+        <h2>Why IB6 exists</h2>
+        <p>
+          AI has made automation affordable for businesses that could never justify an enterprise IT project.
+          But most of them are stuck between tools that never connect and advice that never gets built. IB6
+          closes that gap: we find where AI pays off, build it, and make sure customers can find you — in Google
           and in AI answers.
         </p>
         <h2>Why “IB6”?</h2>
         <p>
-          It’s simply my initials — I.B. — and the six letters of my surname. A reminder that you are hiring
-          a person, not a brand.
+          It’s my initials — I.B. — and the six letters of my surname, Bovkun. A reminder that behind every
+          project there’s a person who answers for it.
         </p>
       </div>
     </div>

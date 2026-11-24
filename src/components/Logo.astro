@@ -1,0 +1,8 @@
+---
+// IB6 wordmark: "IB" = Illia Bovkun; the "6" tile = the six letters of BOVKUN.
+interface Props { size?: number; light?: boolean; }
+const { size = 26, light = false } = Astro.props;
+---
+<a href="/" class:list={['logo', { 'logo-light': light }]} style={`font-size:${size}px`} aria-label="IB6 — home">
+  <span class="ib">IB</span><span class="six" aria-hidden="true">6</span>
+</a>
