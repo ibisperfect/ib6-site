@@ -3,25 +3,22 @@ import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import { services, engagements } from '../data/site';
 ---
-<Base title="Services" description="AI & corporate strategy, AI architecture, AI automation and SEO — delivered by one senior consultant.">
+<Base title="Services" description="AI & corporate strategy, AI architecture, AI automation and SEO & AI search — delivered end to end by one senior consultant.">
   <section class="hero">
     <div class="container">
       <p class="eyebrow reveal">Services</p>
-      <h1 class="display reveal">Senior expertise,<br />end to end.</h1>
-      <p class="lead reveal">Choose one discipline or combine them. Every engagement starts with the business outcome, not the technology.</p>
+      <h1 class="display reveal">Four disciplines.<br /><span class="grad">One plan.</span></h1>
+      <p class="lead reveal">Choose one, or combine them. Every engagement starts with the business outcome — not the technology.</p>
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section-tight" style="padding-top:0">
     <div class="container">
       {services.map((s) => (
         <article class="detail reveal" id={s.id}>
+          <div><span class="num">{s.index}</span><h2 class="h2">{s.title}</h2></div>
           <div>
-            <span class="num">{s.index}</span>
-            <h2 class="h2" style="font-size:clamp(30px,3.4vw,44px);margin-top:12px">{s.title}</h2>
-          </div>
-          <div>
-            <p class="lead" style="max-width:none">{s.body}</p>
+            <p class="lead">{s.body}</p>
             <ul>{s.outcomes.map((o) => <li>{o}</li>)}</ul>
           </div>
         </article>
@@ -32,19 +29,12 @@ import { services, engagements } from '../data/site';
   <section class="section section-alt">
     <div class="container">
       <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Ways to work together</p>
-          <h2 class="h2">Engagement models</h2>
-        </div>
-        <p class="lead">Fixed scope, clear deliverables, transparent pricing agreed upfront.</p>
+        <div><p class="eyebrow">Ways to work together</p><h2 class="h2">Clear scope. Fixed price.</h2></div>
+        <p class="lead">You know what you get, when, and what it costs — before we start.</p>
       </div>
       <div class="cards">
         {engagements.map((e) => (
-          <div class="card reveal">
-            <h3 class="h3">{e.title}</h3>
-            <p class="dur">{e.duration}</p>
-            <p>{e.body}</p>
-          </div>
+          <div class="card reveal"><h3 class="h3">{e.title}</h3><p class="dur">{e.duration}</p><p>{e.body}</p></div>
         ))}
       </div>
     </div>

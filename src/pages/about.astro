@@ -1,45 +1,67 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { site } from '../data/site';
+import Portrait from '../components/Portrait.astro';
+import { site, background } from '../data/site';
 ---
-<Base title="About Illia Bovkun" description="Illia Bovkun is the founder of IB6, an independent consultancy for AI strategy, AI architecture, automation and SEO.">
+<Base title="About Illia Bovkun" description="Illia Bovkun is the founder of IB6. Ten years across oil & gas, venture capital and startups, now helping companies turn AI and search into measurable results.">
   <section class="hero">
     <div class="container founder">
-      <div class="portrait reveal">
-        <picture><source type="image/webp" srcset="/images/illia-600.webp 600w, /images/illia.webp 1200w" sizes="(max-width: 820px) 90vw, 40vw" /><img src="/images/illia.jpg" alt="Portrait of Illia Bovkun" width="1200" height="1500" fetchpriority="high" /></picture>
-      </div>
+      <div class="reveal"><Portrait alt="Portrait of Illia Bovkun" eager /></div>
       <div>
         <p class="eyebrow reveal">About</p>
-        <h1 class="display reveal" style="font-size:clamp(44px,6vw,80px)">Illia Bovkun</h1>
-        <p class="lead reveal" style="margin-top:24px">Founder & Principal Consultant, IB6.</p>
-        <p class="reveal" style="margin-top:24px;display:flex;gap:28px;flex-wrap:wrap"><a class="link-arrow" href={`mailto:${site.email}`}>{site.email}</a><a class="link-arrow" href={site.booking}>Book a call →</a><a class="link-arrow" href={site.linkedin} rel="noopener">LinkedIn →</a></p>
+        <h1 class="display reveal" style="font-size:clamp(44px,5.6vw,76px)">Illia Bovkun</h1>
+        <p class="lead reveal" style="margin-top:20px">
+          Founder of IB6. Ten years across oil & gas, venture capital and startups — now helping companies
+          turn AI and search into measurable results.
+        </p>
+        <p class="reveal" style="margin-top:28px;display:flex;gap:28px;flex-wrap:wrap">
+          <a class="link-arrow" href={site.booking}>Book a call →</a>
+          <a class="link-arrow" href={`mailto:${site.email}`}>{site.email}</a>
+          <a class="link-arrow" href={site.linkedin} rel="noopener">LinkedIn →</a>
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Background</p><h2 class="h2">Three worlds.<br />One way of thinking.</h2></div>
+        <p class="lead">Each taught me something that most AI consultants never have to learn.</p>
+      </div>
+      <div class="cards">
+        {background.map((b) => (
+          <div class="card reveal"><h3 class="h3">{b.title}</h3><p>{b.body}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="prose reveal">
-        <!-- TODO: replace with your own story. Keep it concrete: years, industries, results. -->
+        <h2 style="margin-top:0">Why I started IB6</h2>
         <p>
-          I work where strategy meets engineering. For [X] years I have helped companies in [industries]
-          grow through search, automation and — more recently — applied AI.
+          In oil & gas I saw how much value large organisations lose to manual processes, slow reporting and
+          decisions made on stale data. In venture capital I learned to look at a business the way an investor
+          does — what really drives its value, and what is noise. With startups I learned to ship: small teams,
+          short runways, no room for slideware.
         </p>
         <p>
-          I started IB6 for one reason: too many good ideas die between the strategy deck and the
-          implementation. By owning both, I make sure what is decided is what gets built.
+          AI changes the economics of all three. But most companies are stuck between strategy decks that never
+          get built and tools that never connect to the business. IB6 exists to close that gap: I decide with
+          you where AI pays off, then design and build it — and make sure customers can find you, in Google
+          and in AI answers.
         </p>
         <h2>Why “IB6”?</h2>
         <p>
-          It is simply my initials — I.B. — and the six letters of my surname. A reminder that you are
-          hiring a person, not a brand.
+          It’s simply my initials — I.B. — and the six letters of my surname. A reminder that you are hiring
+          a person, not a brand.
         </p>
-        <h2>Selected experience</h2>
-        <p>[Add 3–5 short, specific highlights: a client type, the problem, the measurable result.]</p>
       </div>
     </div>
   </section>
 
-  <Cta title="Let’s see if we are a fit." />
+  <Cta title="Let’s see if we’re a fit." />
 </Base>

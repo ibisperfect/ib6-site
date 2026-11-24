@@ -1,37 +1,46 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { approach } from '../data/site';
+import { approach, firstSteps } from '../data/site';
 ---
-<Base title="Approach" description="How IB6 works: diagnose, design, build, compound.">
+<Base title="Approach" description="How IB6 works: diagnose, decide, build, compound.">
   <section class="hero">
     <div class="container">
       <p class="eyebrow reveal">Approach</p>
-      <h1 class="display reveal">Clear thinking.<br />Working systems.</h1>
-      <p class="lead reveal">Consulting that stops at slides rarely changes anything. I stay through delivery — and measure what changed.</p>
+      <h1 class="display reveal">Clear thinking.<br /><span class="grad">Working systems.</span></h1>
+      <p class="lead reveal">Advice that stops at slides rarely changes anything. I stay through delivery — and measure what changed.</p>
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section-tight" style="padding-top:0">
     <div class="container">
       {approach.map((a) => (
         <article class="detail reveal">
-          <div><span class="num">{a.index}</span><h2 class="h2" style="font-size:clamp(30px,3.4vw,44px);margin-top:12px">{a.title}</h2></div>
-          <div><p class="lead" style="max-width:none">{a.body}</p></div>
+          <div><span class="num">{a.index}</span><h2 class="h2">{a.title}</h2></div>
+          <div><p class="lead">{a.body}</p></div>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section section-dark">
     <div class="container">
-      <div class="section-head reveal">
-        <div><p class="eyebrow">Principles</p><h2 class="h2">What you can expect</h2></div>
-      </div>
+      <div class="section-head reveal"><div><p class="eyebrow">Principles</p><h2 class="h2">What you can expect.</h2></div></div>
       <div class="cards">
-        <div class="card reveal"><h3 class="h3">Outcomes over output</h3><p style="margin-top:14px">Every recommendation is tied to revenue, cost or risk — not to activity.</p></div>
-        <div class="card reveal"><h3 class="h3">Honest advice</h3><p style="margin-top:14px">If AI is not the answer, I will say so. If I am not the right fit, I will tell you who is.</p></div>
-        <div class="card reveal"><h3 class="h3">Knowledge transfer</h3><p style="margin-top:14px">Documented decisions and trained teams, so you are never dependent on me.</p></div>
+        <div class="card reveal"><h3 class="h3">Outcomes over output</h3><p>Every recommendation is tied to revenue, cost or risk — not to activity.</p></div>
+        <div class="card reveal"><h3 class="h3">Honest advice</h3><p>If AI isn’t the answer, I’ll say so. If I’m not the right fit, I’ll tell you who is.</p></div>
+        <div class="card reveal"><h3 class="h3">No lock-in</h3><p>Documented decisions and a trained team, so you never depend on me.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">Getting started</p><h2 class="h2">Three steps. No obligation.</h2></div></div>
+      <div class="steps three">
+        {firstSteps.map((s) => (
+          <div class="step reveal"><span class="num">Step {s.index}</span><h3 class="h3">{s.title}</h3><p class="muted">{s.body}</p></div>
+        ))}
       </div>
     </div>
   </section>
