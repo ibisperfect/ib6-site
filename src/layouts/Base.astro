@@ -24,7 +24,9 @@ const {
   ogType = 'website',
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).href;
+// build.format 'file' makes pathname end in .html at build time — strip it so canonicals are clean.
+const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';
+const canonical = new URL(cleanPath, site.url).href;
 const ogUrl = new URL(ogImage, site.url).href;
 const ORG = `${site.url}/#organization`;
 const PERSON = `${site.url}/#founder`;

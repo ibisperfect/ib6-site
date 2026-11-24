@@ -1,7 +1,7 @@
 ---
 import { nav, site } from '../data/site';
 import Logo from './Logo.astro';
-const path = Astro.url.pathname.replace(/\/$/, '');
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '');
 ---
 <header class="site-header">
   <div class="container bar">

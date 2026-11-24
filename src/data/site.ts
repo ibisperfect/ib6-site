@@ -169,7 +169,7 @@ export const serviceSeo: Record<string, {
   seo: {
     slug: 'seo-ai-search',
     seoTitle: 'SEO & AI Search Optimisation (GEO) Services | IB6',
-    metaDescription: 'Get found in Google and cited in ChatGPT, Gemini and Perplexity. Technical SEO, content and AI search optimisation, reported against leads — not vanity metrics.',
+    metaDescription: 'Get found in Google and cited in ChatGPT, Gemini and Perplexity. Technical SEO, content and AI search optimisation, reported against leads, not vanity metrics.',
     h1: 'Be found in Google — and cited in AI answers.',
     intro: [
       'Buyers no longer only search Google. They ask ChatGPT, Gemini and Perplexity — and those tools recommend the companies they can understand and trust. We make sure yours is one of them.',
@@ -185,7 +185,7 @@ export const serviceSeo: Record<string, {
   automation: {
     slug: 'ai-automation',
     seoTitle: 'AI Automation for Small & Mid-Sized Businesses | IB6',
-    metaDescription: 'Replace manual work with AI. Workflows and AI agents connected to your CRM, e-commerce store, email and internal tools — shipped in weeks, measured in hours saved.',
+    metaDescription: 'Replace manual work with AI. Workflows and agents connected to your CRM, online store, email and internal tools — shipped in weeks, measured in hours saved.',
     h1: 'AI automation that gives your team its hours back.',
     intro: [
       'If your people copy data between systems, answer the same emails every day or build the same report every week, that work can now be automated — reliably and at a price that makes sense for a growing business.',
@@ -201,7 +201,7 @@ export const serviceSeo: Record<string, {
   strategy: {
     slug: 'ai-strategy',
     seoTitle: 'AI Strategy Consulting for Growing Businesses | IB6',
-    metaDescription: 'Know where AI makes money in your business. AI opportunity mapping, business cases and a practical 12-month roadmap — from a team that also builds what it recommends.',
+    metaDescription: 'Know where AI makes money in your business. Opportunity mapping, business cases and a practical 12-month roadmap — from a team that builds what it recommends.',
     h1: 'An AI strategy you can actually execute.',
     intro: [
       'Every business is being told to “do AI”. Few are told where it actually pays off. We give leadership teams a clear, honest view: which opportunities are worth doing, what they cost, what they return, and in which order.',
